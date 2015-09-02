@@ -1,0 +1,1 @@
+web: legacy-blog-redirect

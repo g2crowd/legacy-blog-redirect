@@ -1,0 +1,8 @@
+{
+  "name": "legacy-blog-redirect",
+  "description": "Redirect traffic from legacy blog to new location",
+  "image": "heroku/go:1.5",
+  "mount_dir": "src/github.com/g2crowd/legacy-blog-redirect",
+  "website": "http://github.com/g2crowd/legacy-blog-redirect",
+  "repository": "http://github.com/g2crowd/legacy-blog-redirect"
+}

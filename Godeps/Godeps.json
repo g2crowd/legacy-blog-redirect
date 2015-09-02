@@ -1,0 +1,5 @@
+{
+	"ImportPath": "github.com/g2crowd/legacy-blog-redirect",
+	"GoVersion": "go1.5",
+	"Deps": []
+}
