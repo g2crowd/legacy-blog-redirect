@@ -2,9 +2,14 @@ package main
 
 import (
 	"log"
-	"os"
 	"net/http"
+	"os"
 )
+
+func handler(w http.ResponseWriter, r *http.Request) {
+	log.Println("Redirecting request for", r.RequestURI)
+	http.Redirect(w, r, os.Getenv("HOST")+r.RequestURI, http.StatusMovedPermanently)
+}
 
 func main() {
 	host := os.Getenv("HOST")
@@ -18,6 +23,6 @@ func main() {
 		log.Fatal("$PORT must be set")
 	}
 
-	http.Handle("/", http.RedirectHandler(host, http.StatusMovedPermanently))
+	http.HandleFunc("/", handler)
 	http.ListenAndServe(":"+port, nil)
 }
