@@ -7,8 +7,16 @@ import (
 )
 
 func handler(w http.ResponseWriter, r *http.Request) {
-	log.Println("Redirecting request:", "Path:", r.RequestURI, "Referrer:", r.Header["Referer"])
-	http.Redirect(w, r, os.Getenv("HOST")+r.RequestURI, http.StatusMovedPermanently)
+	targetPath := r.RequestURI
+
+	if targetPath == "/" {
+		targetPath = "/about/"
+	}
+
+	url := os.Getenv("HOST") + targetPath
+
+	log.Println("Redirecting request:", "Path:", r.RequestURI, "Referrer:", r.Header["Referer"], "To:", url)
+	http.Redirect(w, r, url, http.StatusMovedPermanently)
 }
 
 func main() {
